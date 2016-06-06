@@ -5,16 +5,16 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class MoniAval {
+public class MoniAvalDAO {
     EntityManager em;
     
-    public MoniAval() throws Exception {
+    public MoniAvalDAO() throws Exception {
         EntityManagerFactory emf;
         emf = Conexao.getConexao();
         em = emf.createEntityManager();
     }
     
-    public void incluir(MoniAval obj) throws Exception {
+    public void incluir(MoniAvalDAO obj) throws Exception {
         try {
             em.getTransaction().begin();
             em.persist(obj);
@@ -29,11 +29,11 @@ public class MoniAval {
         
     }
 
-    public List<MoniAval> listar() throws Exception {
+    public List<MoniAvalDAO> listar() throws Exception {
         return em.createNamedQuery("MoniAval.findAll").getResultList();
     }
     
-    public void alterar(MoniAval obj) throws Exception {
+    public void alterar(MoniAvalDAO obj) throws Exception {
         
         try {
             em.getTransaction().begin();
@@ -47,7 +47,7 @@ public class MoniAval {
         }
     }
     
-    public void excluir(MoniAval obj) throws Exception {
+    public void excluir(MoniAvalDAO obj) throws Exception {
         
         try {
             em.getTransaction().begin();

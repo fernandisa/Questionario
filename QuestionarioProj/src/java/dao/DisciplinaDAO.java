@@ -5,16 +5,16 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class Disciplina {
+public class DisciplinaDAO {
     EntityManager em;
     
-    public Disciplina() throws Exception {
+    public DisciplinaDAO() throws Exception {
         EntityManagerFactory emf;
         emf = Conexao.getConexao();
         em = emf.createEntityManager();
     }
     
-    public void incluir(Disciplina obj) throws Exception {
+    public void incluir(DisciplinaDAO obj) throws Exception {
         try {
             em.getTransaction().begin();
             em.persist(obj);
@@ -29,11 +29,11 @@ public class Disciplina {
         
     }
 
-    public List<Disciplina> listar() throws Exception {
+    public List<DisciplinaDAO> listar() throws Exception {
         return em.createNamedQuery("Disciplina.findAll").getResultList();
     }
     
-    public void alterar(Disciplina obj) throws Exception {
+    public void alterar(DisciplinaDAO obj) throws Exception {
         
         try {
             em.getTransaction().begin();
@@ -47,7 +47,7 @@ public class Disciplina {
         }
     }
     
-    public void excluir(Disciplina obj) throws Exception {
+    public void excluir(DisciplinaDAO obj) throws Exception {
         
         try {
             em.getTransaction().begin();
