@@ -54,8 +54,8 @@ public class Curso implements Serializable {
         this.cursoArea = cursoArea;
     }
 
-    public Long getIdCurso() {
-        return idCurso;
+    public String getIdCurso() {
+        return idCurso + nome;
     }
 
     public void setIdCurso(Long idCurso) {

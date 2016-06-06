@@ -4,6 +4,7 @@ package dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import modelo.Disciplina;
 
 public class DisciplinaDAO {
     EntityManager em;
@@ -14,7 +15,7 @@ public class DisciplinaDAO {
         em = emf.createEntityManager();
     }
     
-    public void incluir(DisciplinaDAO obj) throws Exception {
+    public void incluir(Disciplina obj) throws Exception {
         try {
             em.getTransaction().begin();
             em.persist(obj);
@@ -29,11 +30,11 @@ public class DisciplinaDAO {
         
     }
 
-    public List<DisciplinaDAO> listar() throws Exception {
+    public List<Disciplina> listar() throws Exception {
         return em.createNamedQuery("Disciplina.findAll").getResultList();
     }
     
-    public void alterar(DisciplinaDAO obj) throws Exception {
+    public void alterar(Disciplina obj) throws Exception {
         
         try {
             em.getTransaction().begin();
@@ -47,7 +48,7 @@ public class DisciplinaDAO {
         }
     }
     
-    public void excluir(DisciplinaDAO obj) throws Exception {
+    public void excluir(Disciplina obj) throws Exception {
         
         try {
             em.getTransaction().begin();
@@ -58,6 +59,11 @@ public class DisciplinaDAO {
         } finally {
             em.close();
         }
+    }
+    
+    public Disciplina buscarPorChavePrimaria(Integer chave)
+    {
+        return em.find(Disciplina.class, chave);
     }
 
     public void fechaEmf() {

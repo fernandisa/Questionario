@@ -1,47 +1,45 @@
-<%@include file="../cabecalho.jsp"%>
+<%@page import="java.util.List"%>
+<%@page import="modelo.Curso"%>
+<%@page import="dao.CursoDAO"%>
+<%
+    CursoDAO cDAO = new CursoDAO();
+    List<Curso> clista = cDAO.listar();
+%>
+<div>
+    <h1 class="centro">Cadastro de Disciplinas</h1>
+    <form action="disciplina-cadastrar-ok.jsp" method="post">
+        <label>Código:</label><input type="text" name="txtIdDisciplina" /><br />
 
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__supporting-text">
-            <h4>Categoria - Cadastrar</h4>
-            
-            <form action="add-ok.jsp" method="post">
-                <!-- 
-                    primeira div -- área que ocupará o campo de formulário
-                    segunda div -- campo de texto e label 
-                -->
-                
-                <div class="mdl-cell--12-col"> 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" name="txtId" readonly="readonly" required  id="txtNome" />
-                        <label class="mdl-textfield__label" for="txtId">Id</label>
-                    </div>
-               </div>
-                <div class="mdl-cell--12-col"> 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" name="txtNome" required  id="txtNome" />
-                        <label class="mdl-textfield__label" for="txtNome">Nome</label>
-                    </div>
-                </div>
-                
-              <%-- o readonly n permite ao usuario tocar nesse campo --%>
-                
-                <div class="mdl-cell--12-col">
-                    
-                    <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                    <i class="material-icons">save</i></button>
-                    <button type="reset" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                    <i class="material-icons">clear</i></button>
-                    
-                    
-                </div>
-            </form>
-        </div>
-
-    </div>
-
-</section>
-
-<%@include file="../rodape.jsp"%>
-
+            <label>Nome:</label><input type="text" name="txtDiscNome" /><br />
+            <label>Area:</label><input type="text" 
+                                           name="txtArea" /><br />
+            <label>Curso</label>
+            <select name="selcurso">
+                <option value="">Selecione</option>
+                <%                            //percorrer minha lista de cursos
+                    for (Curso c : clista) {
+                %>
+                <option value="<%=c.getIdCurso()%>"><%=c%></option>
+                <%
+                    }
+                %>
+            </select><br />
+            <label>Professor</label>
+            <select name="selprofessor">
+                <option value="">Selecione</option>
+                <%
+                //percorrer minha lista de profs
+                for (Professor p : pLista) {
+                %>
+                    <option value="<%=p.getSiape()%>"><%=p%></option>
+                <%
+                }
+                %>
+            </select>
+            <br />
+            <input type="reset" value="Limpar" />
+            <input type="submit" value="Cadastrar" />
+        </form>
+    
+</div>
 
