@@ -61,7 +61,7 @@ public class DisciplinaDAO {
         }
     }
     
-    public Disciplina buscarPorChavePrimaria(Integer chave)
+    public Disciplina buscarPorChavePrimaria(Long chave)
     {
         return em.find(Disciplina.class, chave);
     }

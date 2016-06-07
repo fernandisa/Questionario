@@ -8,7 +8,6 @@
     Long idDisciplina = Long.parseLong(request.getParameter("txtIdDisciplina"));
     String discNome = request.getParameter("txtDiscNome");
     Long idCurso = Long.parseLong(request.getParameter("selcurso")); // Chave estrangeira
-    String semestre = request.getParameter("txtsemestre");
     Long idprofessor = Long.parseLong(request.getParameter("selprofessor"));
     String area = request.getParameter("txtArea");
     Long idMonitor = Long.parseLong(request.getParameter("selmonitor"));

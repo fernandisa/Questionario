@@ -1,57 +1,42 @@
-<%@page import="modelo.Categoria"%>
-<%@page import="dao.CategoriaDAO"%>
-<%@include file="../cabecalho.jsp"%>
+<%@page import="modelo.Monitor"%>
+<%@page import="dao.CursoDAO"%>
+<%@page import="modelo.Curso"%>
+<%@page import="modelo.Professor"%>
+<%@page import="modelo.Disciplina"%>
+<%@page import="dao.DisciplinaDAO"%>
 <%
-if(request.getParameter("txtName")==null)
-{
-    response.sendRedirect("list.jsp");
-    return;
-}
-        Integer id = Integer.parseInt(request.getParameter("txtId")); // conversao
-        String nome = request.getParameter("txtName");
-        
-        
-
-//Buscar o registro pela chave primária
-//Alterar os demais valores (nesse caso apenas Nome)
-//mandar alterar
- 
-CategoriaDAO dao = new CategoriaDAO();
-
-//busquei o jogador pelo login (registro pela C.Primária)
-
-Categoria obj = dao.buscarPorChavePrimaria(id);
-
-//Se não encontrou o registro volta pra listar 
-if(obj == null)
-{
-    response.sendRedirect("list.jsp");
-    return;
-}
-//Atualizar as demais informações enviadas
-obj.setNome(nome);
-// chamo a atualizar
-dao.alterar(obj);
-
-
-//txtnome é o NAME que eu coloquei no input na tela 
-//anterior
-String nome1 = request.getParameter("txtName");
+    Long idDisciplina = Long.parseLong(request.getParameter("txtIdDisciplina"));
+    String discNome = request.getParameter("txtDiscNome");
+    Long idCurso = Long.parseLong(request.getParameter("selcurso")); // Chave estrangeira
+    Long idprofessor = Long.parseLong(request.getParameter("selprofessor"));
+    String area = request.getParameter("txtArea");
+    Long idMonitor = Long.parseLong(request.getParameter("selmonitor"));
+    
+    DisciplinaDAO dao = new DisciplinaDAO();
+    Disciplina obj = new Disciplina();
+    
+    Professor objProf = new Professor();
+    objProf.setIdProfessor(idprofessor);
+    
+    Curso objCurso = new Curso();
+    CursoDAO daoC = new CursoDAO();
+    objCurso.setIdCurso(idCurso);
+    
+    Monitor objMon = new Monitor();
+    objMon.setIdMonitor(idMonitor);
+    
+    obj.setArea(area);
+    obj.setDiscNome(discNome);
+    obj.setIdDisciplina(idDisciplina);
+    
+    dao.alterar(obj);
+    
 %>
-
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__supporting-text ">
-            <h4>Atualizar</h4>
-            Login:<%=nome1%><br />
-            <p>Registro atualizado com sucesso.</p>
-            <a href="list.jsp"><i class="material-icons">list</i></a>
+<h1 class="centro">Atualização de Disciplina</h1>
             
-        </div>
-
-    </div>
-
-</section>
-
-<%@include file="../rodape.jsp"%>
-
+         <div>
+             Registro alterado com sucesso.<br />
+             <a href="disciplina.jsp">Voltar para Listagem</a>
+         </div>
+    </body>
+</html>
