@@ -1,9 +1,14 @@
+<%@page import="modelo.Monitor"%>
+<%@page import="modelo.Professor"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Curso"%>
 <%@page import="dao.CursoDAO"%>
 <%
     CursoDAO cDAO = new CursoDAO();
     List<Curso> clista = cDAO.listar();
+    // fazer a dao professor para pegar o método listar
+    // fazer a dao monitor para pegar o método listar
+    
 %>
 <div>
     <h1 class="centro">Cadastro de Disciplinas</h1>
@@ -11,8 +16,9 @@
         <label>Código:</label><input type="text" name="txtIdDisciplina" /><br />
 
             <label>Nome:</label><input type="text" name="txtDiscNome" /><br />
-            <label>Area:</label><input type="text" 
-                                           name="txtArea" /><br />
+            
+            <label>Area:</label><input type="text" name="txtArea" /><br />
+            
             <label>Curso</label>
             <select name="selcurso">
                 <option value="">Selecione</option>
@@ -23,20 +29,37 @@
                 <%
                     }
                 %>
-            </select><br />
+            </select>
+            <br />
+            
             <label>Professor</label>
             <select name="selprofessor">
                 <option value="">Selecione</option>
                 <%
                 //percorrer minha lista de profs
-                for (Professor p : pLista) {
+                for (Professor p : pLista) { // fazer dao prof
                 %>
-                    <option value="<%=p.getSiape()%>"><%=p%></option>
+                    <option value="<%=p.getIdProfessor()%>"><%=p%></option>
                 <%
                 }
                 %>
             </select>
             <br />
+            
+            <label>Monitor</label>
+            <select name="selmonitor">
+                <option value="">Selecione</option>
+                <%
+                //percorrer minha lista de profs
+                for (Monitor m : mLista) { // fazer dao monitor
+                %>
+                    <option value="<%=m.getIdMonitor()%>"><%=m%></option>
+                <%
+                }
+                %>
+            </select>
+            <br />
+            
             <input type="reset" value="Limpar" />
             <input type="submit" value="Cadastrar" />
         </form>
