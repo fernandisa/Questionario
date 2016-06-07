@@ -4,6 +4,7 @@ package dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import modelo.MoniAval;
 
 public class MoniAvalDAO {
     EntityManager em;
@@ -14,7 +15,7 @@ public class MoniAvalDAO {
         em = emf.createEntityManager();
     }
     
-    public void incluir(MoniAvalDAO obj) throws Exception {
+    public void incluir(MoniAval obj) throws Exception {
         try {
             em.getTransaction().begin();
             em.persist(obj);
@@ -29,11 +30,11 @@ public class MoniAvalDAO {
         
     }
 
-    public List<MoniAvalDAO> listar() throws Exception {
+    public List<MoniAval> listar() throws Exception {
         return em.createNamedQuery("MoniAval.findAll").getResultList();
     }
     
-    public void alterar(MoniAvalDAO obj) throws Exception {
+    public void alterar(MoniAval obj) throws Exception {
         
         try {
             em.getTransaction().begin();
@@ -47,7 +48,7 @@ public class MoniAvalDAO {
         }
     }
     
-    public void excluir(MoniAvalDAO obj) throws Exception {
+    public void excluir(MoniAval obj) throws Exception {
         
         try {
             em.getTransaction().begin();
@@ -58,6 +59,11 @@ public class MoniAvalDAO {
         } finally {
             em.close();
         }
+    }
+    
+    public MoniAval buscarPorChavePrimaria(Long chave)
+    {
+        return em.find(MoniAval.class, chave);
     }
 
     public void fechaEmf() {

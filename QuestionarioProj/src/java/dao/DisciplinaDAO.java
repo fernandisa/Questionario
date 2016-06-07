@@ -4,6 +4,7 @@ package dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 import modelo.Disciplina;
 
 public class DisciplinaDAO {
@@ -32,6 +33,17 @@ public class DisciplinaDAO {
 
     public List<Disciplina> listar() throws Exception {
         return em.createNamedQuery("Disciplina.findAll").getResultList();
+    }
+    
+    public List<Disciplina> listar(String disc_nome) throws Exception {
+        //passar o parâmetro pra query
+         TypedQuery<Disciplina> query = 
+                 em.createNamedQuery("Disciplina.findByName", Disciplina.class);
+         
+         //Seto o parâmetro
+         query.setParameter("disc_nome", '%' + disc_nome + '%');
+         //retorno minha lista
+         return query.getResultList();
     }
     
     public void alterar(Disciplina obj) throws Exception {

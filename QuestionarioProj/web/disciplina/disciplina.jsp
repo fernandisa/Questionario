@@ -5,6 +5,15 @@
   DisciplinaDAO dao = new DisciplinaDAO();
   List<Disciplina> lista = dao.listar();
   
+  if(request.getParameter("txtFiltro")!= null && request.getParameter("txtFiltro")!= "")
+  {
+      String txtFiltro = request.getParameter("txtFiltro");
+      lista = dao.listar(txtFiltro);
+  }
+  else
+  {
+      lista = dao.listar();
+  }
 %>
 <html>
     <body>
