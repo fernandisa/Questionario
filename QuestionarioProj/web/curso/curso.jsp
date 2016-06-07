@@ -16,4 +16,26 @@
     }
     
 %>
+<html>
+    <body>
+        <div>
+            <h1 class="centro">Cursos</h1>
+            <div>
+                +<a href="curso-cadastrar.jsp">Nova Disciplina</a></ br>
+                <form>
+                    <input type="text" />
+                    <input type="submit" value="Pesquisar"/><br />
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Área do Curso</th>
+                            <th>Ações</th>
+                        </tr>
+                        <%
+                            for(Curso obj: lista)
+                                {
+                        %>
+                        <tr>
+                            <td><%=obj.getIdCurso()%></td>
 
