@@ -21,7 +21,7 @@
         <div>
             <h1 class="centro">Cursos</h1>
             <div>
-                +<a href="curso-cadastrar.jsp">Nova Disciplina</a></ br>
+                +<a href="curso-cadastrar.jsp">Novo Curso</a></ br>
                 <form>
                     <input type="text" />
                     <input type="submit" value="Pesquisar"/><br />
@@ -38,4 +38,19 @@
                         %>
                         <tr>
                             <td><%=obj.getIdCurso()%></td>
-
+                            <td><%=obj.getNome()%></td>
+                            <td><%=obj.getCursoArea()%></td>
+                            <td><a href="curso-atualizar.jsp?codigo=<%=obj.getIdCurso()%>">Editar</a>
+                                <a href="curso-excluir-ok.jsp?codigo=<%=obj.getIdCurso()%>">Excluir</a>
+                            </td>
+                        </tr>
+                        <%
+                            }
+                        %>
+                    </table>
+                    
+                </form>
+            </div>
+        </div>
+    </body>
+</html>      

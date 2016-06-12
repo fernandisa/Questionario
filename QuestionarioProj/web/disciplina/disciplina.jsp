@@ -41,8 +41,8 @@
                             <td><%=obj.getDiscNome()%></td>
                             <td><%=obj.getIdCurso()%></td>
                             <td><%=obj.getIdProfessor()%></td> <%--trocar o getId no professor e colocar o nome junto para aparecer na tela --%>
-                            <td><a href="disciplinas-atualizar.jsp?codigo=<%=obj.getIdDisciplina()%>">Editar</a>
-                                <a href="disciplinas-excluir-ok.jsp?codigo=<%=obj.getIdDisciplina()%>">Excluir</a>
+                            <td><a href="disciplina-atualizar.jsp?codigo=<%=obj.getIdDisciplina()%>">Editar</a>
+                                <a href="disciplina-excluir-ok.jsp?codigo=<%=obj.getIdDisciplina()%>">Excluir</a>
                             </td>
                         </tr>
                         <%

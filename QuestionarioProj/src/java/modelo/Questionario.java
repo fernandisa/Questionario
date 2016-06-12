@@ -25,6 +25,7 @@ import javax.persistence.Table;
 @Table(name = "questionario")
 @NamedQueries({
     @NamedQuery(name = "Questionario.findAll", query = "SELECT q FROM Questionario q")})
+    @NamedQuery(name = "Questionario.findById", query = "SELECT q FROM Questionario q where q.id_questionario like :id_questionario")
 public class Questionario implements Serializable {
 
     private static final long serialVersionUID = 1L;

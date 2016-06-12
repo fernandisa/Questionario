@@ -25,6 +25,7 @@ import javax.persistence.Table;
 @Table(name = "moni_aval")
 @NamedQueries({
     @NamedQuery(name = "MoniAval.findAll", query = "SELECT m FROM MoniAval m")})
+    @NamedQuery(name = "MoniAval.findById", query = "SELECT q FROM MoniAval q where q.id_moniaval like :id_moniaval")
 public class MoniAval implements Serializable {
 
     private static final long serialVersionUID = 1L;
