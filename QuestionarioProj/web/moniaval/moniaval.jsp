@@ -28,27 +28,18 @@
                         <tr>
                             <th>Codigo</th>
                             <th>Código do monitor</th>
+                            <th>Código do questionário</th>
                             <th>Período do monitor</th>
                             <th>Pergunta 1</th>
-                            <th>Resposta 1</th>
-                            <th>Pergunta 2</th>
-                            <th>Resposta 2</th>
-                            <th>Pergunta 3</th>
-                            <th>Resposta 3</th>
+                            <th>Pergunta 2</th>            
+                            <th>Pergunta 3</th>       
                             <th>Pergunta 4</th>
-                            <th>Resposta 4</th>
                             <th>Pergunta 5</th>
-                            <th>Resposta 5</th>
                             <th>Pergunta 6</th>
-                            <th>Resposta 6</th>
                             <th>Pergunta 7</th>
-                            <th>Resposta 7</th>
                             <th>Pergunta 8</th>
-                            <th>Resposta 8</th>
                             <th>Pergunta 9</th>
-                            <th>Resposta 9</th>
                             <th>Pergunta 10</th>
-                            <th>Resposta 10</th>
                             <th>Ações</th>
                         </tr>
                         <%
@@ -58,6 +49,7 @@
                         <tr>
                             <td><%=obj.getIdMoniaval()%></td>
                             <td><%=obj.getIdMonitor()%></td>
+                            <td><%=obj.getIdQuestionario()%></td>
                             <td><%=obj.getMaPeriodo()%></td>
                             <td><%=obj.getMaResposta1()%></td>
                             <td><%=obj.getMaResposta2()%></td>
